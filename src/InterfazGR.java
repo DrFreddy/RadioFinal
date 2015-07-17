@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 /*Universidad del Valle de Guatemala*/
 /*Curso: Estructura de Datos*/
 /*Autores:
-* Freddy JosÈ RuÌz Gatica 14592
-* Pedro JoaquÌn Castillo 14224
-* AndrÈ Josue Rodas 14395
+* Freddy Jos√© Ru√≠z Gatica 14592
+* Pedro Joaqu√≠n Castillo 14224
+* Andr√© Josue Rodas 14395
 */
 /*Clase InterfazGr.java
 * Esta encargada de interactuar con el usuario, encendiendose y apagandose, guardando estacion
@@ -67,7 +67,7 @@ public class InterfazGR {
 	public InterfazGR() {
 		initialize();
 		contRadio=0;
-		radio= new Radio(); /* InicializaciÛn del objeto radio*/
+		radio= new Radio(); /* Inicializaci√≥n del objeto radio*/
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class InterfazGR {
 	 */
 	private void initialize() {
 	
-		/*InicializaciÛn de todos los componentes*/
+		/*Inicializaci√≥n de todos los componentes*/
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 513, 300);
@@ -306,12 +306,12 @@ public class InterfazGR {
 	 * Listener: ctrlRad
 	 * Este Listener es el encargado de habilidad o inhabilitar los componentes
 	 * de la interfaz, con la finalidad de simular el encendido y el apagado de la
-	 * radio. Cumplir· con su cometido empleando el botÛn Encender.
+	 * radio. Cumplir√° con su cometido empleando el bot√≥n Encender.
 	 */
 	private class ctrlRad implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btnCtrlRad){ /*Si el evento se da en el boton de encendido*/
-				radio.encenderApagar(); /*Emplea el mÈtodo encender Apagar para gestionar el encendido*/
+				radio.encenderApagar(); /*Emplea el m√©todo encender Apagar para gestionar el encendido*/
 				if (radio.getEncendido()== true){ /*Si esta encendida*/
 					/*Habilita todos los componentes */
 					panelRad.setEnabled(true);
@@ -373,8 +373,8 @@ public class InterfazGR {
 		
 	/**
 	 * Listener: crtlEst
-	 * Este listener est· encargado de subir y bajar la estaciÛn con cierto dependiendo
-	 * aumento definido si la frecuencia es AM/FM. Cumplir· con su cometido mediante
+	 * Este listener est√° encargado de subir y bajar la estaci√≥n con cierto dependiendo
+	 * aumento definido si la frecuencia es AM/FM. Cumplir√° con su cometido mediante
 	 * el uso de los botones: subEst y bajEst.
 	 */
 	private class ctrlEst implements ActionListener{
@@ -382,13 +382,13 @@ public class InterfazGR {
 			double est=0;
 			if (e.getSource()== btnSubEst ){ 				/*Si se presiona el boton subir estacion (+)*/
 				if (rdbtnAm.isSelected() && (radio.getFrecuencia() == false)){ 					/* y LA ESTACION ES AM*/
-					radio.adelantarEmisora(); 				/*Emplea el mÈtodo adelantar emisora*/
+					radio.adelantarEmisora(); 				/*Emplea el m√©todo adelantar emisora*/
 					est= radio.getEmisora(); 				/*Obtiene la emisora actual*/
 					lblestacion.setText(""+est); 			/*La coloca en la label que la muestra*/
 				}
 				if (rdnbtnFm.isSelected() && (radio.getFrecuencia() == true)){						/* Si LA ESTACION ES FM*/
 				
-					radio.adelantarEmisora();					/*Emplea el mÈtodo adelantar emisora*/
+					radio.adelantarEmisora();					/*Emplea el m√©todo adelantar emisora*/
 					est= radio.getEmisora();					/*Obtiene la emisora actual*/
 					lblestacion.setText(""+est);				/*La coloca en la label que la muestra*/
 				}
@@ -398,13 +398,13 @@ public class InterfazGR {
 			if (e.getSource()== btnBajEst  ){ /*Si se presiona el boton bajar estacion (-)*/
 				if (rdbtnAm.isSelected() && (radio.getFrecuencia() == false)){ /* y LA ESTACION ES AM*/
 					
-					radio.atrasarEmisora();/*Emplea el mÈtodo atrasarEmisora*/
+					radio.atrasarEmisora();/*Emplea el m√©todo atrasarEmisora*/
 					est= radio.getEmisora();/*Obtiene la emisora actual*/
 					lblestacion.setText(""+est);/*La coloca en la label que la muestra*/
 				}
 				if (rdnbtnFm.isSelected()&& (radio.getFrecuencia() == true)){ /* Si LA ESTACION ES FM*/
-					radio.setFrecuencia(true);	/*Se setea la frecuencia en Fm=true*/
-					radio.atrasarEmisora();/*Emplea el mÈtodo atrasarEmisora*/
+					
+					radio.atrasarEmisora();/*Emplea el m√©todo atrasarEmisora*/
 					est= radio.getEmisora();/*Obtiene la emisora actual*/
 					lblestacion.setText(""+est);/*La coloca en la label que la muestra*/
 				}
@@ -441,7 +441,7 @@ public class InterfazGR {
 	/**
 	 * Listener: ctrlBtn
 	 * Botones: rdbtnAm, rdbtnFm, rdbtnAlm, rdbtnLoad, btnE1...... E12
-	 * La funcionalidad de este listener es m˙ltiple ya que para los radiobuttons
+	 * La funcionalidad de este listener es m√∫ltiple ya que para los radiobuttons
 	 * AM y FM es empleado para colocar el valor inical de la frecuencia. Ahora bien
 	 * para el resto de botones, sirve para guardar y cargar estaciones, alternando
 	 * el radio button seleccionado (Almacenar, Guardar). En el caso de almacenar
@@ -457,6 +457,7 @@ public class InterfazGR {
 				}
 				else{
 				radio.cambiarFrec(); /*Luego hace el cambio de frecuencia*/
+				lblestacion.setText(""+ radio.getEmisora()); /*Setea la emisora en la label emisora*/
 				}
 				
 				}
@@ -466,10 +467,12 @@ public class InterfazGR {
 				if (radio.getFrecuencia()== true){
 					
 					lblestacion.setText(""+radio.getEmisora());/*Setea la emisora en la label emisora*/
+					
 				}
 				else
 				{
 				radio.cambiarFrec();/*Luego hace el cambio de frecuencia*/
+					lblestacion.setText(""+ radio.getEmisora()); /*Setea la emisora en la label emisora*/
 				}
 				
 			}
@@ -502,7 +505,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());/*Coloca la emisora en la label emisora*/
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del primer botÛn*/	
+			}/*Cierre del primer bot√≥n*/	
 			/***********************NOTAAAAAAAA********************************************/
 			/*LA MISMA ESTRUCTURA DE CODIGO SE UTILIZAN EN LOS DOCE BOTONES, POR LOS CUAL NO SE COLOCARAN COMENTARIOS EN LOS OTROS BOTONES*/
 			/*SUFICIENTE CON LA EXPLICACION DE UN SOLO BOTON */
@@ -535,7 +538,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 2do botÛn*/
+			}/*Cierre del 2do bot√≥n*/
 			
 			if (e.getSource()==btnE3) {
 				double emis=0;
@@ -565,7 +568,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 3ero botÛn*/
+			}/*Cierre del 3ero bot√≥n*/
 			
 			if (e.getSource()==btnE4) {
 				double emis=0;
@@ -594,7 +597,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 4to botÛn*/
+			}/*Cierre del 4to bot√≥n*/
 			
 			if (e.getSource()==btnE5) {
 				double emis=0;
@@ -624,7 +627,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 5to botÛn*/
+			}/*Cierre del 5to bot√≥n*/
 			
 			if (e.getSource()==btnE6) {
 				double emis=0;
@@ -654,7 +657,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 6to botÛn*/
+			}/*Cierre del 6to bot√≥n*/
 			
 			
 			if (e.getSource()==btnE7) {
@@ -685,7 +688,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 7to botÛn*/
+			}/*Cierre del 7to bot√≥n*/
 			
 			if (e.getSource()==btnE8) {
 				double emis=0;
@@ -715,7 +718,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 8tavo botÛn*/
+			}/*Cierre del 8tavo bot√≥n*/
 			
 			if (e.getSource()==btnE9) {
 				double emis=0;
@@ -745,7 +748,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 9veno botÛn*/
+			}/*Cierre del 9veno bot√≥n*/
 			if (e.getSource()==btnE10) {
 				double emis=0;
 				if (rdbtnAm.isSelected() && (radio.getFrecuencia() == false)){
@@ -774,7 +777,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del decimo botÛn*/
+			}/*Cierre del decimo bot√≥n*/
 			
 			if (e.getSource()==btnE11) {
 				double emis=0;
@@ -804,7 +807,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 11vo botÛn*/
+			}/*Cierre del 11vo bot√≥n*/
 			if (e.getSource()==btnE12) {
 				double emis=0;
 				if (rdbtnAm.isSelected() && (radio.getFrecuencia() == false)){
@@ -833,7 +836,7 @@ public class InterfazGR {
 						 lblestacion.setText(""+ radio.getEmisora());
 					 }
 				}/*Cierra el fm*/
-			}/*Cierre del 12 botÛn*/
+			}/*Cierre del 12 bot√≥n*/
 		}
 	}/*Cierre del Listener controlradio buttons */
 	}
